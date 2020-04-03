@@ -3,7 +3,7 @@ import java.util.TreeSet;
 
 public class Main {
     public static void main(String[] args) {
-        World world = new World();  //  This shit is fucking poetic
+        World world = new World();
 
         //  Let's make a few object instances, shall we
         Nurse nurse1 = new Nurse(2, 5000, "Violet", 26);

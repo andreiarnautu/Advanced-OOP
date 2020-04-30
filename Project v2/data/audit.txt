@@ -1,0 +1,6 @@
+Hospital(London Central Hospital).getMostCommonDisease(),    30-04-2020 19:52:05
+Hospital(London Central Hospital).getSumOfSalaries(),    30-04-2020 19:52:06
+Hospital(London Central Hospital).getNumberOfDoctors(),    30-04-2020 19:52:06
+Hospital(London Central Hospital).getMostCommonDisease(),    30-04-2020 19:52:12
+Hospital(London Central Hospital).getSumOfSalaries(),    30-04-2020 19:52:12
+Hospital(London Central Hospital).getNumberOfDoctors(),    30-04-2020 19:52:12

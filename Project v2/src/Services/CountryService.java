@@ -5,17 +5,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 //  read and write data from data/countries.csv
-public class CountryCsvHandler {
-    private static CountryCsvHandler instance = null;
+public class CountryService {
+    private static CountryService instance = null;
 
     //  private constructor
-    private CountryCsvHandler() {
+    private CountryService() {
     }
 
 
-    public static CountryCsvHandler getInstance() {
+    public static CountryService getInstance() {
         if (instance == null) {
-            instance = new CountryCsvHandler();
+            instance = new CountryService();
         }
         return instance;
     }

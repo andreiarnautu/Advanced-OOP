@@ -3,26 +3,24 @@ package Services;
 import Entities.Hospital;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
 //  read and write data from/to  "data/hospitals.csv"
-public class HospitalCsvHandler {
-    private static HospitalCsvHandler instance = null;
+public class HospitalService {
+    private static HospitalService instance = null;
 
 
-    private HospitalCsvHandler() {
+    private HospitalService() {
     }
 
 
-    public static HospitalCsvHandler getInstance() {
+    public static HospitalService getInstance() {
         if (instance == null) {
-            instance = new HospitalCsvHandler();
+            instance = new HospitalService();
         }
         return instance;
     }
-
 
     public void readHospitals(World world, String filePath) throws FileNotFoundException {
         File fileDescriptor = new File(filePath);
@@ -41,6 +39,7 @@ public class HospitalCsvHandler {
             world.getCountry(data[1]).addHospital(data[0]);
         }
     }
+
 
     public void writeHospitals(World world, String filePath) throws IOException {
         FileWriter writer = new FileWriter(filePath);

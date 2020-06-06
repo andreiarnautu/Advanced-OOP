@@ -2,45 +2,65 @@ import Entities.*;
 import Services.*;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.TreeSet;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
+        DatabaseConnection connection = DatabaseConnection.getInstance();
+        String selectStatement = "SELECT * FROM doctors";
+
+        try (PreparedStatement statement = DatabaseConnection.getInstance().getConnection().prepareStatement(selectStatement)) {
+            ResultSet result = statement.executeQuery();
+
+            while (result.next()) {
+                String name = result.getString("name");
+                String hospital = result.getString("hospital");
+                System.out.println(name + ' ' + hospital);
+            }
+
+
+        } catch (SQLException e) {
+            System.out.println("Something went wrong.");
+        }
+
+        test2(connection);
+
+    }
+
+    public static void test2(DatabaseConnection connection) throws IOException {
         World world = new World();
 
-        CountryCsvHandler countryCsvHandler = CountryCsvHandler.getInstance();
-        countryCsvHandler.readCountries(world, "data/countries.csv");
+        CountryService countryService = CountryService.getInstance();
+        countryService.readCountries(world, "data/countries.csv");
 
-        HospitalCsvHandler hospitalCsvHandler = HospitalCsvHandler.getInstance();
-        hospitalCsvHandler.readHospitals(world, "data/hospitals.csv");
+        HospitalService hospitalService = HospitalService.getInstance();
+        hospitalService.readHospitals(world, "data/hospitals.csv");
 
-        DoctorCsvHandler doctorCsvHandler = DoctorCsvHandler.getInstance();
-        doctorCsvHandler.readDoctors(world, "data/doctors.csv");
+        DoctorService doctorService = DoctorService.getInstance();
+        doctorService.readDoctors(connection, world);
 
-        NurseCsvHandler nurseCsvHandler = NurseCsvHandler.getInstance();
-        nurseCsvHandler.readNurses(world, "data/nurses.csv");
+        NurseService nurseService = NurseService.getInstance();
+        nurseService.readNurses(connection, world);
 
-        JanitorCsvHandler janitorCsvHandler = JanitorCsvHandler.getInstance();
-        janitorCsvHandler.readJanitors(world, "data/janitors.csv");
+        JanitorService janitorService = JanitorService.getInstance();
+        janitorService.readJanitors(connection, world);
 
-        PatientCsvHandler patientCsvHandler = PatientCsvHandler.getInstance();
-        patientCsvHandler.readPatients(world, "data/patients.csv");
+        PatientService patientService = PatientService.getInstance();
+        patientService.readPatients(connection, world);
 
-        VictimCsvHandler victimCsvHandler = VictimCsvHandler.getInstance();
-        victimCsvHandler.readVictims(world, "data/victims.csv");
+        VictimService victimService = VictimService.getInstance();
+        victimService.readVictims(connection, world);
+
+        Doctor doctor = new Doctor("neurology", 20000, 5899, "Hank O'Brien", 44);
+        doctorService.addDoctor(connection, world, doctor, "London Central Hospital", "England");
 
         Hospital hospital = world.getCountry("England").getHospital("London Central Hospital");
         System.out.println(hospital.getMostCommonDisease());
         System.out.println(hospital.getSumOfSalaries());
         System.out.println(hospital.getNumberOfDoctors());
-
-        countryCsvHandler.writeCountries(world, "data/countries.csv");
-        hospitalCsvHandler.writeHospitals(world, "data/hospitals.csv");
-        doctorCsvHandler.writeDoctors(world, "data/hospitals.csv");
-        nurseCsvHandler.writeNurses(world, "data/nurses.csv");
-        janitorCsvHandler.writeJanitors(world, "data/janitors.csv");
-        patientCsvHandler.writePatients(world, "data/patients.csv");
-        victimCsvHandler.writeVictims(world, "data/victims.csv");
     }
 
     public static void test() throws IOException {

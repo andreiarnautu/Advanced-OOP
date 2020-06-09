@@ -19,3 +19,12 @@ Hospital(London Central Hospital).getNumberOfDoctors(),    06-06-2020 13:19:59
 Hospital(London Central Hospital).getMostCommonDisease(),    06-06-2020 13:20:35
 Hospital(London Central Hospital).getSumOfSalaries(),    06-06-2020 13:20:35
 Hospital(London Central Hospital).getNumberOfDoctors(),    06-06-2020 13:20:35
+Hospital(London Central Hospital).getMostCommonDisease(),    main,    09-06-2020 17:31:31
+Hospital(London Central Hospital).getSumOfSalaries(),    main,    09-06-2020 17:31:31
+Hospital(London Central Hospital).getNumberOfDoctors(),    main,    09-06-2020 17:31:31
+Hospital(London Central Hospital).getMostCommonDisease(),    main,    09-06-2020 18:20:29
+Hospital(London Central Hospital).getSumOfSalaries(),    main,    09-06-2020 18:20:29
+Hospital(London Central Hospital).getNumberOfDoctors(),    main,    09-06-2020 18:20:29
+Hospital(London Central Hospital).getMostCommonDisease(),    main,    09-06-2020 18:22:37
+Hospital(London Central Hospital).getSumOfSalaries(),    main,    09-06-2020 18:22:37
+Hospital(London Central Hospital).getNumberOfDoctors(),    main,    09-06-2020 18:22:37

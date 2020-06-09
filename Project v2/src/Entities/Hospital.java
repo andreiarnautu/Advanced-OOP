@@ -87,38 +87,38 @@ public class Hospital {
 
     //  Query sizes
     public Integer getNumberOfPacients() throws IOException {
-        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getNumberOfPacients()");
+        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getNumberOfPacients()", Thread.currentThread().getName());
         return this.listOfPatients.size();
     }
 
     public Integer getNumberOfVictims() throws IOException {
-        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getNumberOfVictims()");
+        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getNumberOfVictims()", Thread.currentThread().getName());
         return this.listOfVictims.size();
     }
 
     public Integer getNumberOfDoctors() throws IOException {
-        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getNumberOfDoctors()");
+        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getNumberOfDoctors()", Thread.currentThread().getName());
         return this.listOfDoctors.size();
     }
 
     public Integer getNumberOfNurses() throws IOException {
-        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getNumberOfNurses()");
+        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getNumberOfNurses()", Thread.currentThread().getName());
         return this.listOfNurses.size();
     }
 
     public Integer getNumberOfJanitors() throws IOException {
-        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getNumberOfJanitors()");
+        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getNumberOfJanitors()", Thread.currentThread().getName());
         return this.listOfJanitors.size();
     }
 
     public Integer getNumberOfEmployees() throws IOException {
-        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getNumberOfEmployees()");
+        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getNumberOfEmployees()", Thread.currentThread().getName());
         return this.getNumberOfDoctors() + this.getNumberOfNurses() + this.getNumberOfJanitors();
     }
 
     //  Print operations
     public void printListOfPacients() throws IOException {
-        AuditHandler.printAction("Hospital(" + this.hospitalName + ").printListOfPacients()");
+        AuditHandler.printAction("Hospital(" + this.hospitalName + ").printListOfPacients()", Thread.currentThread().getName());
 
         System.out.println("List of checked-in pacients at hospital " + this.hospitalName + ":");
         for (Patient pacient : this.listOfPatients) {
@@ -127,7 +127,7 @@ public class Hospital {
     }
 
     public void printListOfVictims() throws IOException {
-        AuditHandler.printAction("Hospital(" + this.hospitalName + ").printListOfVictims()");
+        AuditHandler.printAction("Hospital(" + this.hospitalName + ").printListOfVictims()", Thread.currentThread().getName());
 
         System.out.println("List of registered victims at hospital " + this.hospitalName + ":");
         for (Victim victim : this.listOfVictims) {
@@ -136,7 +136,7 @@ public class Hospital {
     }
 
     public void printListOfDoctors() throws IOException {
-        AuditHandler.printAction("Hospital(" + this.hospitalName + ").printListOfDoctors()");
+        AuditHandler.printAction("Hospital(" + this.hospitalName + ").printListOfDoctors()", Thread.currentThread().getName());
 
         System.out.println("List of employed doctors at hospital " + this.hospitalName + ":");
         for (Doctor doctor : this.listOfDoctors) {
@@ -145,7 +145,7 @@ public class Hospital {
     }
 
     public void printListOfNurses() throws IOException {
-        AuditHandler.printAction("Hospital(" + this.hospitalName + ").printListOfNurses()");
+        AuditHandler.printAction("Hospital(" + this.hospitalName + ").printListOfNurses()", Thread.currentThread().getName());
 
         System.out.println("List of employed nurses at hospital " + this.hospitalName + ":");
         for (Nurse nurse : this.listOfNurses) {
@@ -154,7 +154,7 @@ public class Hospital {
     }
 
     public void printListOfJanitors() throws IOException {
-        AuditHandler.printAction("Hospital(" + this.hospitalName + ").printListOfJanitors()");
+        AuditHandler.printAction("Hospital(" + this.hospitalName + ").printListOfJanitors()", Thread.currentThread().getName());
 
         System.out.println("List of employed janitors at hospital " + this.hospitalName + ":");
         for (Janitor janitor : this.listOfJanitors) {
@@ -163,7 +163,7 @@ public class Hospital {
     }
 
     public void printHospitalEmployees() throws IOException {
-        AuditHandler.printAction("Hospital(" + this.hospitalName + ").printHospitalEmployees()");
+        AuditHandler.printAction("Hospital(" + this.hospitalName + ").printHospitalEmployees()", Thread.currentThread().getName());
 
         System.out.println(String.format("Printing the %d employees of hospital %s", this.getNumberOfEmployees(), this.hospitalName));
         this.printListOfDoctors();
@@ -175,7 +175,7 @@ public class Hospital {
 
     //  Get all the diseases that are currently present in the current hospital
     public TreeSet<String> getListOfDiseases() throws IOException {
-        AuditHandler.printAction("Hospital(" + this.hospitalName + ").printListOfDiseases()");
+        AuditHandler.printAction("Hospital(" + this.hospitalName + ").printListOfDiseases()", Thread.currentThread().getName());
 
         TreeSet<String> diseaseList = new TreeSet<>();
 
@@ -187,7 +187,7 @@ public class Hospital {
     }
 
     public String getMostCommonDisease() throws IOException {
-        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getMostCommonDisease()");
+        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getMostCommonDisease()", Thread.currentThread().getName());
 
         String mostCommonDisease = "";
         Integer mostAppearances = 0;
@@ -212,7 +212,7 @@ public class Hospital {
     }
 
     public Integer getSumOfSalaries() throws IOException {
-        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getSumOfSalaries()");
+        AuditHandler.printAction("Hospital(" + this.hospitalName + ").getSumOfSalaries()", Thread.currentThread().getName());
         Integer result = 0;
         for (Doctor doctor : this.listOfDoctors) {
             result += doctor.getSalary();

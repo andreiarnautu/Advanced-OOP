@@ -26,33 +26,6 @@ public class VictimService {
         return instance;
     }
 
-
-    public void readVictims(World world, String filePath) throws FileNotFoundException {
-        File fileDescriptor = new File(filePath);
-        Scanner scanner = new Scanner(fileDescriptor);
-
-        int lineId = -1;
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            lineId += 1;
-
-            if (lineId == 0) {
-                continue;
-            }
-
-            String[] data = line.split(",");
-
-            String name = data[0];
-            Integer age = Integer.parseInt(data[1]);
-            String causeOfDeath = data[2];
-            String hospital = data[3];
-            String country = data[4];
-
-            Victim victim = new Victim(causeOfDeath, name, age);
-            world.getCountry(country).getHospital(hospital).addVictim(victim);
-        }
-    }
-
     public void readVictims(DatabaseConnection connection, World world) {
         String selectStatement = "SELECT * FROM victims;";
         try (PreparedStatement statement = DatabaseConnection.getInstance().getConnection().prepareStatement(selectStatement)) {

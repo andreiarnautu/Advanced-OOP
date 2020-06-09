@@ -11,13 +11,13 @@ public class AuditHandler {
 
     }
 
-    public static void printAction(String actionName) throws IOException {
-        FileWriter writer = new FileWriter("data/audit.txt", true);
+    public static void printAction(String actionName, String threadName) throws IOException {
+        FileWriter writer = new FileWriter("data/audit.csv", true);
 
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date date = new Date();
 
-        writer.append(actionName + ",    " + dateFormat.format(new Date()) + "\n");
+        writer.append(actionName + ",    "  + threadName + ",    " + dateFormat.format(new Date()) + "\n");
         writer.close();
     }
 }

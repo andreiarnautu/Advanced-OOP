@@ -25,13 +25,14 @@ public class Main {
         } catch (SQLException e) {
             System.out.println("Something went wrong.");
         }
-
         test2(connection);
+        GuiService guiService = new GuiService();
+
 
     }
 
     public static void test2(DatabaseConnection connection) throws IOException {
-        World world = new World();
+        World world = World.getInstance();
 
         CountryService countryService = CountryService.getInstance();
         countryService.readCountries(world, "data/countries.csv");
@@ -54,7 +55,7 @@ public class Main {
         VictimService victimService = VictimService.getInstance();
         victimService.readVictims(connection, world);
 
-        Doctor doctor = new Doctor("neurology", 20000, 5899, "Hank O'Brien", 44);
+        Doctor doctor = new Doctor("neurology", 25000, 5999, "Andrei Ionescu", 45);
         doctorService.addDoctor(connection, world, doctor, "London Central Hospital", "England");
 
         Hospital hospital = world.getCountry("England").getHospital("London Central Hospital");
@@ -64,7 +65,7 @@ public class Main {
     }
 
     public static void test() throws IOException {
-        World world = new World();
+        World world = World.getInstance();
 
         //  Let's make a few object instances, shall we
         Nurse nurse1 = new Nurse(2, 5000, "Violet", 26);

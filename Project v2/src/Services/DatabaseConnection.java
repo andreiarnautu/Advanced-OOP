@@ -12,6 +12,7 @@ public class DatabaseConnection {
     private final String password = "andi";
     private final Connection connection;
 
+
     private DatabaseConnection() throws SQLException, ClassNotFoundException {
         Class.forName("com.mysql.jdbc.Driver");
         this.connection = DriverManager.getConnection(url, username, password);
